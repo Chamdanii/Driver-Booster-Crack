@@ -1,0 +1,471 @@
+:root {
+  --primary: #b6895b;
+  --bg: #010101;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+/* agar scroll nya atau perpindahan section nya smooth */
+/* tambahkan scroll-behavior: smooth; di html mu */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "poppins", sans-serif;
+  background-color: var(--bg);
+  color: #fff;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 7%;
+  /* background-color: rgba(1, 1, 1, 0.8); */
+  background-color: var(--primary);
+  border-bottom: 1px solid #533f2b;
+  /* pas di scroll, navbar diem diatas */
+  position: fixed;
+  /* supaya mentok keatas */
+  top: 0;
+  /* supaya size nya penuh dari kiri, kanan layar */
+  left: 0;
+  right: 0;
+  /* agar navbar selalu diatas  */
+  z-index: 9999;
+}
+
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  font-style: italic;
+}
+
+.navbar .navbar-logo span {
+  color: var(--bg);
+}
+
+.navbar .navbar-nav a {
+  color: #fff;
+  /* agar bisa diatur margin/ukuran nya tanpa membuat mereka */
+  /* turun kebawah, karna kalo pake block mereka akan turun */
+  /* anchor tag display default nya inline */
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+}
+
+.navbar .navbar-nav a:hover {
+  color: var(--bg);
+}
+
+.navbar .navbar-nav a::after {
+  /* animasi baris ketika dihover pake seudo element   */
+  /* content kosong agar bisa diatur dimensinya */
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--bg);
+  /* untuk memperbesar/memperkecil sumbu x*/
+  transform: scaleX(0);
+  /* transisi sebelum dihover, dan linear supaya speed nya */
+  /* sama */
+  transition: 0.2s linear;
+}
+
+.navbar .navbar-nav a:hover::after {
+  /* memperbesar setengah dari ukuran asli yaitu 1 */
+  transform: scaleX(0.5);
+}
+
+.navbar .navbar-extra a {
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra a:hover {
+  color: var(--bg);
+}
+
+#hamburger-menu {
+  /* dihilangkan agar bisa dimunculkan ketika hamburger  */
+  /* menunya diklik pake javascript */
+  display: none;
+}
+
+/* hero section */
+.hero {
+  min-height: 100vh;
+  /* pake flexbox agar elements didalam tag main berada ditengah hero nya secara vertical */
+  display: flex;
+  align-items: center;
+  background-image: url(/img/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* element pembungkusnya dikasih relative(non-static) */
+  position: relative;
+}
+
+/* gradasi warna untuk bagian bawah hero agar warna nya nyambung */
+.hero::after {
+  content: "";
+  display: block;
+  /* pake absolute biar nempel kebawah */
+  position: absolute;
+  width: 100%;
+  /* agar element after nya nggak memenuhi layar karna kalo height nya 100% element after nya akan memenuhi layar*/
+  /* dan menghalangi tombol cta nya sehingga nggak bisa diklik  */
+  height: 30%;
+  /* agar degradasi warnanya turun */
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(1, 1, 3, 1) 8%, rgba(255, 255, 255, 0) 50%);
+}
+
+.hero .content {
+  padding: 1.4rem 7%;
+  max-width: 60rem;
+}
+
+.hero .content h1 {
+  font-size: 5em;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  line-height: 1.2;
+}
+
+.hero .content p {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-weight: 100;
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  color: #fff;
+}
+
+.hero .content .cta {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: var(--primary);
+}
+
+/* about section */
+.about,
+.menu,
+.contact {
+  padding: 8rem 7% 1.4rem;
+}
+
+.about h2,
+.menu h2,
+.contact h2 {
+  /* agar judul di section menu punya style yg sama dgn judul di section about */
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 3rem;
+}
+
+.about .row {
+  display: flex;
+}
+
+.about .row .about-img {
+  /* flex shorthand untuk flex grow, flex shrink dg ukuran 45rem */
+  flex: 1 1 45rem;
+}
+
+.about .row .about-img img {
+  /* pake 100% agar memenuhi satu bagian flex nya */
+  width: 100%;
+}
+
+.about .row .content {
+  flex: 1 1 35rem;
+  padding: 0 1rem;
+}
+
+.about .row .content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.about .row .content p {
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 100;
+  line-height: 1.6;
+}
+
+/* menu section  */
+.menu h2,
+.contact h2 {
+  margin-bottom: 1rem;
+}
+
+.menu p,
+.contact p {
+  text-align: center;
+  /* agar tampilannya nggak terlalu lebar */
+  max-width: 30rem;
+  /* agar tampilannya ke tengah */
+  margin: auto;
+  font-weight: 100;
+  line-height: 1.6;
+  font-size: 1.4rem;
+}
+
+.menu .row {
+  display: flex;
+  /* agar kalo kebanyakan otomatis langsung turun kebawah */
+  flex-wrap: wrap;
+  /* agar nggak terlalu nempel keatas */
+  margin-top: 5rem;
+  /* agar gambar menu nya ditengah semua */
+  justify-content: center;
+}
+
+.menu .row .menu-card {
+  text-align: center;
+  /* agar gambar menu nya nggak dempet */
+  padding-bottom: 4rem;
+}
+
+.menu .row .menu-card img {
+  /* 50% agar bulat */
+  border-radius: 50%;
+  /* agar nggak terlalu lebar gambarnya */
+  width: 80%;
+}
+
+.menu .row .menu-card .menu-card-title {
+  margin: 1rem auto 0.5rem;
+}
+
+/* Contact section */
+.contact .row {
+  display: flex;
+  /* agar nggak nempel */
+  margin-top: 2rem;
+  background-color: #222;
+}
+
+.contact .row .map {
+  /* shrink 1 grow 1 basis/ukuran 45rem */
+  flex: 1 1 45rem;
+  /* agar peta nya penuh */
+  width: 100%;
+  object-fit: cover;
+}
+
+.contact .row form {
+  flex: 1 1 45rem;
+  /* agar agak gede input nya */
+  padding: 5rem 2rem;
+  /* agar ditengah input nya */
+  text-align: center;
+}
+
+.contact .row form .input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  background-color: var(--bg);
+  border: 1px solid #eee;
+  padding-left: 2rem;
+}
+
+.contact .row form .input-group input {
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.7rem;
+  background: none;
+  /* agar tulisan yg akan diketik di input bewarna putih */
+  color: #fff;
+}
+
+.contact .row form .btn {
+  /* agar nggak nempel dgn input */
+  margin-top: 3rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--primary);
+  /* agar semua tulisan di footer di tengah */
+  text-align: center;
+  padding: 1rem 0 3rem;
+  /* agar footer nggak terlalu nempel ke section contact */
+  margin-top: 3rem;
+}
+
+footer .socials {
+  padding: 1rem 0;
+}
+
+footer .socials a {
+  /* warna icon sosmed */
+  color: #fff;
+  /* agar ada jarak kiri kanan dari icon sosmed */
+  margin: 1rem;
+}
+
+footer .socials a:hover,
+footer .links a:hover {
+  color: var(--bg);
+}
+
+footer .links {
+  margin-bottom: 1.4rem;
+}
+
+footer .links a {
+  color: #fff;
+  padding: 0.7rem 1rem;
+}
+
+footer .credit {
+  font-size: 0.9rem;
+}
+
+footer .credit a {
+  color: var(--bg);
+  font-weight: 700;
+}
+
+footer .credit a:hover {
+  color: #fff;
+}
+/* code-code diatas untuk tampilan desktop */
+/* dg max-width: 1920px */
+/* media queries */
+
+/* laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  /* agar hamburger-menu nya muncul kembali */
+  /* saat ditampilan tablet */
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  .navbar .navbar-nav {
+    /* mindahin posisi link menu nya keluar layar */
+    /* supaya pas diklik hamburger menu nya */
+    /* link menu nya akan masuk sebagai sidebar */
+    /* pake absolute agar bisa digerak-gerakin dg mudah */
+    /* tanpa mengganggu elements disekitar nya */
+    position: absolute;
+    /* top 100% agar nempel keatas */
+    top: 100%;
+    /* kalo 0 ada disebelah layar, kalo -100% keluar dari layar */
+    right: -100%;
+    background-color: #fff;
+    width: 30rem;
+    /* 100vh agar memenuhi layar dibawah navbar */
+    height: 100vh;
+    /* transisi nya sebelum class active  */
+    transition: 0.3s;
+  }
+
+  .navbar .navbar-nav.active {
+    /* class active nya akan dipake di javascript */
+    right: 0;
+  }
+
+  .navbar .navbar-nav a {
+    /* untuk ngatur tata letak link menu saat masuk ke layar */
+    /* jadi sidebar */
+    color: var(--bg);
+    /* pake block agar elements nya turun kebawah */
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-nav a::after {
+    /* pake transform-origin untuk mengubah posisi element */
+    /* yg di transform */
+    transform-origin: 0;
+  }
+
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+  }
+
+  .about .row {
+    /* agar gambar dan teks di bagian About Us turun kebawah */
+    /* saat dibuka di layar tablet */
+    flex-wrap: wrap;
+  }
+
+  .about .row .about-img img {
+    /* agar gambarnya nggak tinggi-tinggi amat */
+    height: 24rem;
+    /* agar gambarnya nggak ketarik saat layarnya diperbesar */
+    object-fit: cover;
+    /* agar gambar kopi di About Us ditengah-tengah/agar fokus nya tertuju pada gambar kopi*/
+    object-position: center;
+  }
+
+  .about .row .content {
+    /* padding nya diilangin agar teks di About Us sejajar dgn gambar nya */
+    padding: 0;
+  }
+
+  .about .row .content p {
+    font-size: 1.6rem;
+  }
+
+  .menu p {
+    font-size: 1.2rem;
+  }
+
+  .contact .row {
+    flex-wrap: wrap;
+  }
+
+  .contact .row .map {
+    /* agar map nya nggak terlalu pendek */
+    height: 30rem;
+  }
+
+  .contact .row form {
+    /* agar jarak map dan input nggak terlalu jauh */
+    padding-top: 0;
+  }
+}
+
+/* mobile phone */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}
