@@ -469,7 +469,7 @@ footer .credit a:hover {
     font-size: 55%;
   }
 
-  .contact .row .map {
+  .map {
     /* shrink 1 grow 1 basis/ukuran 45rem */
     flex: 1 1 45rem;
     /* agar peta nya penuh */
