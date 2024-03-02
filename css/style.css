@@ -109,7 +109,7 @@ body {
   /* pake flexbox agar elements didalam tag main berada ditengah hero nya secara vertical */
   display: flex;
   align-items: center;
-  background-image: url(/img/hero.jpg);
+  background-image: url("../img/hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -467,13 +467,5 @@ footer .credit a:hover {
 @media (max-width: 450px) {
   html {
     font-size: 55%;
-  }
-
-  .map {
-    /* shrink 1 grow 1 basis/ukuran 45rem */
-    flex: 1 1 45rem;
-    /* agar peta nya penuh */
-    width: 100%;
-    object-fit: cover;
   }
 }
